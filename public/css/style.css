@@ -76,7 +76,6 @@ h1 {
 }
 
 .lineChart{
-    stroke-width: 10;
     stroke:#000;
     stroke-dasharray: 4;
 }

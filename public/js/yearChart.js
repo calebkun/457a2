@@ -101,6 +101,11 @@ YearChart.prototype.update = function(){
         .attr("r", function(d,i){
             return self.svgWidth/(self.electionWinners.length*4)
         })
+        .on("click", function(d){
+            var year = d.YEAR
+            var electionResult = d3.csv("data/election-results-"+year+".csv")
+            self.tileChart.update(electionResult, colorScale)
+        })
 
     //Append text information of each year right below the corresponding circle
     //HINT: Use .yeartext class to style your text elements
@@ -121,11 +126,13 @@ YearChart.prototype.update = function(){
     //Style the chart by adding a dashed line that connects all these years.
     //HINT: Use .lineChart to style this dashed line
 
-    // var line = svg.append("line")
-    // .attr("x1" = "0")
-    // .attr("y1" = "5") 
-    // .attr("x2" = "5")
-    // .attr("y2" = "5")
+    var line = chart.append("line")
+        .attr("class", "lineChart")
+        .attr("x1", "0")
+        .attr("y1", "50") 
+        .attr("x2", function(d,i){
+            return (self.svgWidth)})
+        .attr("y2", "50")
 
 
     //Clicking on any specific year should highlight that circle and  update the rest of the visualizations
